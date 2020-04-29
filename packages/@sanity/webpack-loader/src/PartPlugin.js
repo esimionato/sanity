@@ -1,6 +1,6 @@
 const partResolver = require('@sanity/resolver')
 const path = require('path')
-const cache = require('./cache')
+// const cache = require('./cache')
 
 class PartPlugin {
   constructor(options) {
@@ -8,6 +8,7 @@ class PartPlugin {
       throw new Error('`basePath` option must be specified in part resolver plugin constructor')
     }
 
+    this.cache = options.cache
     this.env = options.env
     this.basePath = options.basePath
     this.additionalPlugins = options.additionalPlugins || []
@@ -15,15 +16,26 @@ class PartPlugin {
   }
 
   apply(compiler) {
+    const cache = this.cache
     const env = this.env
     const basePath = this.basePath
     const configPath = this.configPath
     const additionalPlugins = this.additionalPlugins
 
+    //
+    compiler.__sanityCache = cache
+
     const runHook = (currentCompiler, callback) => {
       partResolver
         .resolveParts({env, basePath, additionalPlugins})
         .then(parts => {
+          //  = {
+          //   basePath: basePath,
+          //   configPath: configPath,
+          //   parts: parts
+          // }
+
+          // console.log('RESOLVED PARTS!')
           cache.__basePath = basePath
           cache.__configPath = configPath
           cache.__parts = parts

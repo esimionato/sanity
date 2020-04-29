@@ -104,6 +104,10 @@
     {
       "implements": "part:@sanity/desk-tool/after-editor-component",
       "path": "src/components/AfterEditorComponent.js"
+    },
+    {
+      "implements": "part:@sanity/base/sanity-root",
+      "path": "src/components/SanityRoot.js"
     }
   ],
   "env": {

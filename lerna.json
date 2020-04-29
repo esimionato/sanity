@@ -18,8 +18,7 @@
     "packages/movies-studio",
     "packages/sanity",
     "packages/storybook",
-    "packages/test-studio",
-    "packages/webpack-test"
+    "packages/test-studio"
   ],
   "version": "1.149.12"
 }

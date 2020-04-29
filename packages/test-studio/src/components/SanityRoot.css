@@ -1,0 +1,11 @@
+@import 'part:@sanity/base/theme/variables-style';
+@import './vars.css';
+
+.root {
+  padding: var(--medium-padding);
+}
+
+.test {
+  composes: root;
+  composes: boldText from './utils.css';
+}
