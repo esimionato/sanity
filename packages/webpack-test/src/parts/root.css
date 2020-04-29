@@ -1,0 +1,5 @@
+@import 'part:@sanity/base/theme';
+
+.root {
+  background: color-mod(var(--blue) alpha(50%));
+}
